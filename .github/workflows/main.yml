@@ -4,11 +4,14 @@ on:
     branches:
       - main
   workflow_dispatch:
-
 jobs:
   train:
     runs-on: ubuntu-latest
     steps:
+    - name: Set up Node.js 20
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
