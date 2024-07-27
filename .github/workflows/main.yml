@@ -95,12 +95,12 @@ jobs:
     - name: Build the Docker image for Fastapi app
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER_NAME }}
-      run: docker build . -f bikeshare_project/bikeshare_model_api/Dockerfile -t $DOCKER_USER/bykeshare-fastapi:latest
+      run: docker build . -f bikeshare_project/bikeshare_model_api/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/bykeshare-fastapi:latest
 
     - name: Push the Docker Image
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER_NAME }}
-      run: docker push $DOCKER_USER/bykeshare-fastapi
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/bykeshare-fastapi:latest
 
     - name: Logout to Docker hub
       run: docker logout
