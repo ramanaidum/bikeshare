@@ -20,11 +20,11 @@ jobs:
     - name: Install dependencies
       run: pip install -r bikeshare_project/requirements/requirements.txt
     - name: Train and save pipeline
-      run: python bikeshare_model/train_pipeline.py
+      run: python bikeshare_project/bikeshare_model/train_pipeline.py
     - uses: actions/upload-artifact@v2
       with:
         name: my-trained-pipeline
-        path: bikeshare_model/trained_models/*.pkl
+        path: bikeshare_project/bikeshare_model/trained_models/*.pkl
         retention-days: 1
 
   test:
@@ -41,9 +41,9 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: my-trained-pipeline
-        path: bikeshare_model/trained_models
+        path: bikeshare_project/bikeshare_model/trained_models
     - name: Install dependencies
-      run: pip install -r requirements/test_requirements.txt
+      run: pip install -r bikeshare_project/requirements/test_requirements.txt
     - name: Test with pytest
       run: pytest
 
@@ -61,7 +61,7 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: my-trained-pipeline
-        path: bikeshare_model/trained_models
+        path: bikeshare_project/bikeshare_model/trained_models
     - name: Install dependencies
       run: pip install --upgrade build
     - name: Build package
