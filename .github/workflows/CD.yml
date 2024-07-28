@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ec2_runner_01
 
     steps:
       - name: Pull Docker Image
